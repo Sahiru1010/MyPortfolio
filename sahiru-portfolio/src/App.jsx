@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaCommentDots, FaTimes, 
   FaChevronRight, FaChevronLeft, FaAward, FaBriefcase, FaGraduationCap, FaCode, 
-  FaTerminal, FaUser, FaPaperPlane, FaStar, FaTools, FaUsers 
+  FaTerminal, FaUser, FaPaperPlane, FaStar, FaTools, FaUsers, 
+  FaPhoneAlt, FaMapMarkerAlt, FaFacebookF // <-- Added these 3
 } from 'react-icons/fa';
 import profilePic from './assets/profilePic.png';
 
@@ -164,11 +165,22 @@ gallery: [
     }, 1500);
   };
 
-  useEffect(() => {
-    if (chatEndRef.current) {
+useEffect(() => {
+    // Only scroll to the bottom if the chat is actually open!
+    if (chatEndRef.current && isChatOpen) {
       chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [chatMessages, isTyping, isChatOpen]);
+
+  useEffect(() => {
+    // 1. Force the browser to scroll to the absolute top on load/refresh
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
+    // 2. Silently remove the #hash from the URL so the browser doesn't try to jump down
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, []);
 
   return (
     <>
@@ -225,6 +237,14 @@ gallery: [
         .animate-fade-in {
           animation: fadeIn 0.3s ease-out forwards;
         }
+
+        @keyframes floating {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        .animate-floating {
+          animation: floating 3s ease-in-out infinite;
+        }
       `}</style>
 
       <div className="blob bg-blue-600/30 w-96 h-96 top-[-10%] left-[-10%]"></div>
@@ -265,12 +285,49 @@ gallery: [
             </RevealOnScroll>
             
             <RevealOnScroll delay={400} className="flex flex-wrap gap-5 pt-4">
-              <a href="#contact" className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all flex items-center gap-2 group">
-                Initialize Contact <FaChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="#" className="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center gap-2 group">
-                <FaDownload size={18} className="group-hover:-translate-y-1 transition-transform" /> Access CV
-              </a>
+              <div className="flex flex-wrap items-center gap-6 pt-6">
+                
+                {/* Primary Action Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <a href="#contact" className="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] flex items-center gap-2 group">
+                    Initialize Contact <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a href="/sahiru-cv.pdf" download className="px-8 py-4 rounded-xl bg-slate-900 border border-white/10 hover:bg-slate-800 text-white font-bold transition-all hover:scale-105 flex items-center gap-2">
+                    <FaDownload /> Access CV
+                  </a>
+                </div>
+
+                {/* Subtle Divider (Hides on very small screens) */}
+                <div className="hidden sm:block w-px h-12 bg-white/10 rounded-full"></div>
+                <br></br><br></br><br></br><br></br><br></br>
+                {/* Floating Neon Social Icons */}
+                <div className="flex gap-4">
+                  
+                  
+                  {/* GitHub - Neon Indigo Glow */}
+                  <div className="animate-floating" style={{ animationDelay: '0s' }}>
+                    <a href="#" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.5)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.9)] transition-all duration-300">
+                      <FaGithub size={20} />
+                    </a>
+                  </div>
+
+                  {/* LinkedIn - Neon Blue Glow */}
+                  <div className="animate-floating" style={{ animationDelay: '0.2s' }}>
+                    <a href="#" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.5)] flex items-center justify-center text-blue-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
+                      <FaLinkedin size={20} />
+                    </a>
+                  </div>
+
+                  {/* Email - Neon Emerald Glow */}
+                  <div className="animate-floating" style={{ animationDelay: '0.4s' }}>
+                    <a href="mailto:contact@example.com" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.9)] transition-all duration-300">
+                      <FaEnvelope size={20} />
+                    </a>
+                  </div>
+
+                </div>
+
+              </div>
             </RevealOnScroll>
           </div>
           
@@ -566,26 +623,122 @@ gallery: [
           </div>
         )}
         
-        <footer id="contact" className="relative mt-20 border-t border-white/10 bg-slate-900/50 backdrop-blur-xl overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-            <RevealOnScroll className="flex flex-col items-center text-center">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">Initiate <span className="text-gradient">Connection</span></h2>
-              <p className="text-slate-400 max-w-xl mx-auto mb-10 text-lg">
-                Seeking a collaboration on data science modeling or require high-end graphic design architecture?
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-6 mb-16">
-                <a href="#" className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-slate-300 hover:text-white transition-all">
-                  <FaGithub size={24} />
-                </a>
-                <a href="#" className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-slate-300 hover:text-white transition-all">
-                  <FaLinkedin size={24} />
-                </a>
-                <a href="mailto:email@example.com" className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-slate-300 hover:text-white transition-all">
-                  <FaEnvelope size={24} />
-                </a>
+{/* --- ENHANCED 4-COLUMN FOOTER --- */}
+        <footer id="contact" className="relative mt-32 bg-[#020617] overflow-hidden border-t border-white/10">
+          
+          {/* Top Edge Glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-indigo-500/70 to-transparent"></div>
+          
+          {/* Background Ambient Blur */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+          <div className="max-w-7xl mx-auto px-6 pt-20 pb-10 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 mb-16">
+
+              {/* Column 1: Brand & Bio (Aligns Left) */}
+              <div className="col-span-1">
+                <RevealOnScroll delay={100} className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.3)]">
+                      <FaCode className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white tracking-tight">Sahiru<span className="text-indigo-400">.</span></h3>
+                      <p className="text-xs text-slate-400 font-mono">Data Science & Design</p>
+                    </div>
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed pr-4">
+                    Architecting intelligent systems and crafting visually compelling digital branding for modern networks.
+                  </p>
+                  
+                  {/* Social Icons with Neon Floating Effect */}
+                  <div className="flex gap-4 pt-2">
+                    <div className="animate-floating" style={{ animationDelay: '0s' }}>
+                      <a href="#" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.5)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.9)] transition-all duration-300">
+                        <FaGithub size={18} />
+                      </a>
+                    </div>
+                    <div className="animate-floating" style={{ animationDelay: '0.4s' }}>
+                      <a href="#" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.5)] flex items-center justify-center text-blue-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
+                        <FaLinkedin size={18} />
+                      </a>
+                    </div>
+                    <div className="animate-floating" style={{ animationDelay: '0.8s' }}>
+                      <a href="mailto:contact@example.com" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.9)] transition-all duration-300">
+                        <FaEnvelope size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </RevealOnScroll>
               </div>
-            </RevealOnScroll>
+
+              {/* Column 2: Quick Links (Aligns perfectly Center) */}
+              <div className="col-span-1 flex md:justify-center">
+                <div className="w-fit">
+                  <RevealOnScroll delay={200} className="space-y-6">
+                    <h4 className="text-lg font-bold text-white tracking-wide">Quick Links</h4>
+                    <ul className="space-y-3">
+                      {['About', 'Education', 'Portfolio', 'Services', 'Contact'].map((link) => (
+                        <li key={link}>
+                          <a href={`#${link.toLowerCase()}`} className="text-slate-400 text-sm hover:text-indigo-400 transition-colors flex items-center gap-2 group w-fit">
+                            <FaChevronRight size={10} className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-indigo-500" />
+                            <span className="group-hover:translate-x-1 transition-transform duration-300">{link}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </RevealOnScroll>
+                </div>
+              </div>
+
+              {/* Column 3: Get In Touch (Aligns perfectly Right) */}
+              <div className="col-span-1 flex md:justify-end">
+                <div className="w-fit">
+                  <RevealOnScroll delay={300} className="space-y-6">
+                    <h4 className="text-lg font-bold text-white tracking-wide">Get In Touch</h4>
+                    <ul className="space-y-5">
+                      <li>
+                        <a href="mailto:contact@example.com" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
+                          <div className="w-10 h-10 shrink-0 rounded-lg bg-slate-800/50 border border-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:border-indigo-500/30 transition-all duration-300">
+                            <FaEnvelope className="text-indigo-400 group-hover:scale-110 transition-transform" />
+                          </div>
+                          <span className="text-sm truncate">contact@example.com</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="tel:+94700000000" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
+                          <div className="w-10 h-10 shrink-0 rounded-lg bg-slate-800/50 border border-white/5 flex items-center justify-center group-hover:bg-purple-500/20 group-hover:border-purple-500/30 transition-all duration-300">
+                            <FaPhoneAlt className="text-purple-400 group-hover:scale-110 transition-transform" />
+                          </div>
+                          <span className="text-sm">+94 7X XXX XXXX</span>
+                        </a>
+                      </li>
+                      <li>
+                        <div className="flex items-center gap-4 text-slate-400 group cursor-default">
+                          <div className="w-10 h-10 shrink-0 rounded-lg bg-slate-800/50 border border-white/5 flex items-center justify-center group-hover:bg-pink-500/20 group-hover:border-pink-500/30 transition-all duration-300">
+                            <FaMapMarkerAlt className="text-pink-400 group-hover:animate-bounce" />
+                          </div>
+                          <span className="text-sm">Padukka, Sri Lanka</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </RevealOnScroll>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom Legal Bar */}
+            <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-slate-500 text-sm">
+                &copy; 2026 Sahiru Sandeepa. All rights reserved.
+              </p>
+              <div className="flex gap-6 text-sm font-medium text-slate-500">
+                <a href="#" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-indigo-400 transition-colors">Terms of Service</a>
+                <a href="#" className="hover:text-indigo-400 transition-colors">Sitemap</a>
+              </div>
+            </div>
           </div>
         </footer>
 
