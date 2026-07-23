@@ -3,8 +3,13 @@ import {
   FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaCommentDots, FaTimes, 
   FaChevronRight, FaChevronLeft, FaAward, FaBriefcase, FaGraduationCap, FaCode, 
   FaTerminal, FaUser, FaPaperPlane, FaStar, FaTools, FaUsers, 
-  FaPhoneAlt, FaMapMarkerAlt, FaFacebookF // <-- Added these 3
+  FaPhoneAlt, FaMapMarkerAlt, FaFacebookF
 } from 'react-icons/fa';
+
+// ... your other imports ...
+
+import LiquidEther from './LiquidEther'; // <-- Add this import
+
 import profilePic from './assets/profilePic.png';
 
 // ADD YOUR NEW IMAGE IMPORTS HERE:
@@ -20,6 +25,8 @@ import VehicleImg4 from './assets/VR - 4.png';
 import HospitalImg from './assets/JavaLogo.png';
 import SpringImg from './assets/SpringLogo.png';
 import MySQLImg from './assets/MySQLLogo.png';
+
+
 
 const RevealOnScroll = ({ children, className = "", delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -120,7 +127,7 @@ export default function App() {
         VehicleImg3,
         VehicleImg4
       ],
-      githubLink: 'https://github.com/yourusername/vehicle-rental'
+      githubLink: 'https://github.com/OpenStag/project-15.git'
     },
     {
       id: 'content',
@@ -184,6 +191,30 @@ useEffect(() => {
 
   return (
     <>
+
+
+<div className="fixed inset-0 z-[-2]">
+  <LiquidEther
+    colors={[ '#5227FF', '#FF9FFC', '#B497CF' ]}
+    mouseForce={20}
+    cursorSize={100}
+    isViscous
+    viscous={30}
+    iterationsViscous={32}
+    iterationsPoisson={32}
+    resolution={0.5}
+    isBounce={false}
+    autoDemo
+    autoSpeed={0.5}
+    autoIntensity={2.2}
+    takeoverDuration={0.25}
+    autoResumeDelay={3000}
+    autoRampDuration={0.6}
+    color0="#13083e"
+    color1="#052aff"
+    color2="#01021a"
+/>
+</div>
       <style>{`
         body { background-color: #020617; color: #f8fafc; }
         .glass { 
@@ -245,7 +276,9 @@ useEffect(() => {
         .animate-floating {
           animation: floating 3s ease-in-out infinite;
         }
+          
       `}</style>
+
 
       <div className="blob bg-blue-600/30 w-96 h-96 top-[-10%] left-[-10%]"></div>
       <div className="blob bg-purple-600/20 w-[30rem] h-[30rem] bottom-[-10%] right-[-10%]" style={{animationDelay: '-5s'}}></div>
@@ -270,7 +303,7 @@ useEffect(() => {
           <div className="flex-1 space-y-8 z-10">
             <RevealOnScroll>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-indigo-300 text-sm font-medium mb-4">
-                <FaTerminal size={14} /> Available for opportunities
+                <FaTerminal size={14} /> 
               </div>
               <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
                 Designing Data.<br />
@@ -280,7 +313,7 @@ useEffect(() => {
             
             <RevealOnScroll delay={200}>
               <p className="text-lg text-slate-400 leading-relaxed max-w-2xl border-l-2 border-indigo-500/50 pl-6">
-                <strong>Who I Am:</strong> I am Sahiru Sandeepa, a Data Science undergraduate bridging the analytical depths of AI/ML with the creative heights of Graphic Design. I architect systems that are intelligently functional and visually compelling.
+                <strong>I'm Sahiru Sandeepa</strong> an undergraduate pursuing dual degrees in Data Science and Software Engineering. With a strong focus on Artificial Intelligence, Machine Learning, complex data analysis and Full Stack Development.
               </p>
             </RevealOnScroll>
             
@@ -290,7 +323,7 @@ useEffect(() => {
                 {/* Primary Action Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <a href="#contact" className="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] flex items-center gap-2 group">
-                    Initialize Contact <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
+                    Get in Touch <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
                   </a>
                   <a href="/sahiru-cv.pdf" download className="px-8 py-4 rounded-xl bg-slate-900 border border-white/10 hover:bg-slate-800 text-white font-bold transition-all hover:scale-105 flex items-center gap-2">
                     <FaDownload /> Access CV
@@ -299,28 +332,28 @@ useEffect(() => {
 
                 {/* Subtle Divider (Hides on very small screens) */}
                 <div className="hidden sm:block w-px h-12 bg-white/10 rounded-full"></div>
-                <br></br><br></br><br></br><br></br><br></br>
+                
                 {/* Floating Neon Social Icons */}
-                <div className="flex gap-4">
+                <div className="flex gap-5 mt-8 lg:mt-0">
                   
                   
                   {/* GitHub - Neon Indigo Glow */}
                   <div className="animate-floating" style={{ animationDelay: '0s' }}>
-                    <a href="#" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.5)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.9)] transition-all duration-300">
+                    <a href="https://github.com/Sahiru1010" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.5)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.9)] transition-all duration-300">
                       <FaGithub size={20} />
                     </a>
                   </div>
 
                   {/* LinkedIn - Neon Blue Glow */}
                   <div className="animate-floating" style={{ animationDelay: '0.2s' }}>
-                    <a href="#" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.5)] flex items-center justify-center text-blue-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
+                    <a href="https://www.linkedin.com/in/sahiru-sandeepa-9b1914267/" target="_blank" rel="noopener noreferrer"className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.5)] flex items-center justify-center text-blue-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
                       <FaLinkedin size={20} />
                     </a>
                   </div>
 
                   {/* Email - Neon Emerald Glow */}
                   <div className="animate-floating" style={{ animationDelay: '0.4s' }}>
-                    <a href="mailto:contact@example.com" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.9)] transition-all duration-300">
+                    <a href="mailto:sahirusandeepa52@gmail.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-slate-900/80 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.9)] transition-all duration-300">
                       <FaEnvelope size={20} />
                     </a>
                   </div>
@@ -350,11 +383,11 @@ useEffect(() => {
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
                     <span className="text-sm font-bold text-slate-200 tracking-wide">Data Science and AI Enthusiast</span>
                   </div>
+  <div className="absolute -bottom-6 -right-4 md:-right-10 z-20 bg-slate-800/80 backdrop-blur-xl px-6 py-4 rounded-[1.5rem] flex flex-col items-center justify-center border border-white/5 shadow-2xl hover:-translate-y-2 transition-transform duration-300">
+    <span className="text-2xl font-extrabold text-blue-400 drop-shadow-md">UG</span>
+    <span className="text-sm text-slate-400 font-extrabold text-center mt-1 leading-tight">at<br/>SLTC</span>
+  </div>
 
-                  <div className="absolute -bottom-6 -right-4 md:-right-10 z-20 bg-slate-800/80 backdrop-blur-xl px-6 py-4 rounded-[1.5rem] flex flex-col items-center justify-center border border-white/5 shadow-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <span className="text-2xl font-extrabold text-blue-400 drop-shadow-md">UG</span>
-                    <span className="text-1xl text-slate-400 font-extrabold text-center mt-1 leading-tight">at<br/>SLTC</span>
-                  </div>
                 </div>
               </div>
             </RevealOnScroll>
@@ -382,7 +415,7 @@ useEffect(() => {
                 <h3 className="text-2xl font-bold text-white mb-2">BSc (Hons) in Data Science</h3>
                 <h4 className="text-lg text-slate-300 mb-4 font-medium">Sri Lanka Technological Campus (SLTC)</h4>
                 <p className="text-slate-400 leading-relaxed">
-                  Currently pursuing a degree with strong academic focus on Artificial Intelligence, Machine Learning, Big Data Analytics,and complex statistical modelling.
+                  Currently pursuing a degree with strong academic focus on Artificial Intelligence, Machine Learning, Big Data Analytics, and complex statistical modelling.
                 </p>
                 <br></br>
                 <h3 className="text-2xl font-bold text-white mb-2">Bachelor of Information Technology (BIT)</h3>
@@ -523,7 +556,7 @@ useEffect(() => {
           </div>
         </section>
 
-        {/* --- SINGLE PROJECT POP-UP MODAL --- */}
+      
         {/* --- SINGLE PROJECT POP-UP MODAL --- */}
         {selectedProject && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -598,7 +631,7 @@ useEffect(() => {
                 </div>
               </div>
               
-              <div className="p-6 border-t border-white/10 bg-slate-950/50 flex justify-end rounded-b-3xl">
+              <div className="flex gap-8 p-6 border-t border-white/10 bg-slate-950/50 flex justify-end rounded-b-3xl">
                 {/* Conditionally render the report button ONLY if a reportLink exists */}
                 {selectedProject.reportLink && (
                   <a 
@@ -643,8 +676,8 @@ useEffect(() => {
                       <FaCode className="text-white text-xl" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white tracking-tight">Sahiru<span className="text-indigo-400">.</span></h3>
-                      <p className="text-xs text-slate-400 font-mono">Data Science & Design</p>
+                      <h3 className="text-2xl font-bold text-white tracking-tight">Sahiru Sandeepa<span className="text-indigo-400"></span></h3>
+                      <p className="text-xs text-slate-400 font-mono">Data Science | Software Engineering</p>
                     </div>
                   </div>
                   <p className="text-slate-400 text-sm leading-relaxed pr-4">
@@ -654,17 +687,17 @@ useEffect(() => {
                   {/* Social Icons with Neon Floating Effect */}
                   <div className="flex gap-4 pt-2">
                     <div className="animate-floating" style={{ animationDelay: '0s' }}>
-                      <a href="#" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.5)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.9)] transition-all duration-300">
+                      <a href="https://github.com/Sahiru1010" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-indigo-500/60 shadow-[0_0_12px_rgba(99,102,241,0.5)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 hover:border-indigo-400 hover:shadow-[0_0_25px_rgba(99,102,241,0.9)] transition-all duration-300">
                         <FaGithub size={18} />
                       </a>
                     </div>
                     <div className="animate-floating" style={{ animationDelay: '0.4s' }}>
-                      <a href="#" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.5)] flex items-center justify-center text-blue-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
+                      <a href="https://www.linkedin.com/in/sahiru-sandeepa-9b1914267/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-blue-500/60 shadow-[0_0_12px_rgba(59,130,246,0.5)] flex items-center justify-center text-blue-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.9)] transition-all duration-300">
                         <FaLinkedin size={18} />
                       </a>
                     </div>
                     <div className="animate-floating" style={{ animationDelay: '0.8s' }}>
-                      <a href="mailto:contact@example.com" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.9)] transition-all duration-300">
+                      <a href="mailto:sahirusandeepa52@gmail.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-900/80 border-2 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.5)] flex items-center justify-center text-emerald-400 hover:text-white hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.9)] transition-all duration-300">
                         <FaEnvelope size={18} />
                       </a>
                     </div>
@@ -698,19 +731,19 @@ useEffect(() => {
                     <h4 className="text-lg font-bold text-white tracking-wide">Get In Touch</h4>
                     <ul className="space-y-5">
                       <li>
-                        <a href="mailto:contact@example.com" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
+                        <a href="mailto:sahirusandeepa52@gmail.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
                           <div className="w-10 h-10 shrink-0 rounded-lg bg-slate-800/50 border border-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:border-indigo-500/30 transition-all duration-300">
                             <FaEnvelope className="text-indigo-400 group-hover:scale-110 transition-transform" />
                           </div>
-                          <span className="text-sm truncate">contact@example.com</span>
+                          <span className="text-sm truncate">sahirusandeepa52@gmail.com</span>
                         </a>
                       </li>
                       <li>
-                        <a href="tel:+94700000000" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
+                        <a href="tel:+94 70 213 2649" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
                           <div className="w-10 h-10 shrink-0 rounded-lg bg-slate-800/50 border border-white/5 flex items-center justify-center group-hover:bg-purple-500/20 group-hover:border-purple-500/30 transition-all duration-300">
                             <FaPhoneAlt className="text-purple-400 group-hover:scale-110 transition-transform" />
                           </div>
-                          <span className="text-sm">+94 7X XXX XXXX</span>
+                          <span className="text-sm">+94 70 213 2649</span>
                         </a>
                       </li>
                       <li>
@@ -718,7 +751,7 @@ useEffect(() => {
                           <div className="w-10 h-10 shrink-0 rounded-lg bg-slate-800/50 border border-white/5 flex items-center justify-center group-hover:bg-pink-500/20 group-hover:border-pink-500/30 transition-all duration-300">
                             <FaMapMarkerAlt className="text-pink-400 group-hover:animate-bounce" />
                           </div>
-                          <span className="text-sm">Padukka, Sri Lanka</span>
+                          <span className="text-sm">Colombo, Sri Lanka</span>
                         </div>
                       </li>
                     </ul>
