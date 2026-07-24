@@ -258,10 +258,10 @@ useEffect(() => {
     mouseForce={20}
     cursorSize={100}
     isViscous
-    viscous={30}
-    iterationsViscous={32}
-    iterationsPoisson={32}
-    resolution={0.5}
+    viscous={20}
+    iterationsViscous={8}
+    iterationsPoisson={8}
+    resolution={0.25}
     isBounce={false}
     autoDemo
     autoSpeed={0.5}
@@ -279,7 +279,8 @@ useEffect(() => {
         .glass { 
           background: rgba(30, 41, 59, 0.3); 
           backdrop-filter: blur(12px); 
-          border: 1px solid rgba(255, 255, 255, 0.08); 
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          will-change: transform, backdrop-filter;
         }
         .glass-card:hover {
           background: rgba(30, 41, 59, 0.6);
@@ -294,6 +295,8 @@ useEffect(() => {
         .blob {
           position: fixed; filter: blur(90px); z-index: -1; opacity: 0.4;
           border-radius: 50%; animation: float 10s infinite ease-in-out alternate;
+          will-change: transform, filter;
+          transform: translateZ(0);
         }
         @keyframes float {
           0% { transform: translateY(0px) scale(1); }
