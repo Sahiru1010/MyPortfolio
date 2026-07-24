@@ -69,7 +69,34 @@ export default function App() {
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
   
-  const [selectedProject, setSelectedProject] = useState(null); 
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
+
+  const certificatesData = [
+    { 
+      id: 1, 
+      title: 'AWS Foundations: Machine Learning Basics', 
+      issuer: 'AWS Training & Certification', 
+      year: '2026',
+      file: '/ML spec AWS.pdf' // <-- Put ml-cert.pdf in your public folder
+    },
+    { 
+      id: 2, 
+      title: 'Programming in Python - Python for Beginners ',
+      issuer: 'University of Moratuwa',
+      year: '2026', 
+      file: '/Python_for_Beginners_E-Certificate.pdf' // <-- Put ds-cert.pdf in your public folder
+    },
+    
+    {
+      id: 3, 
+      title: 'Full-Stack React Architecture', 
+      issuer: 'Meta', 
+      year: '2026', 
+      file: '/react-cert.pdf' // <-- Put react-cert.pdf in your public folder
+    }
+    
+  ];
   const galleryRef = useRef(null);
 
   const scrollGallery = (direction) => {
@@ -154,20 +181,52 @@ gallery: [
     }
   ];
 
-  const handleSendMessage = (e) => {
+  // --- ADD THIS NEW FUNCTION ---
+  const generateAIResponse = (userInput) => {
+    const input = userInput.toLowerCase();
+    
+    if (input.includes('hi') || input.includes('hello') || input.includes('hey')) {
+      return "Hello! I'm Sahiru's AI assistant. Ask me about his skills, education, projects, or how to contact him!";
+    } 
+    else if (input.includes('skill') || input.includes('tech') || input.includes('tools')) {
+      return "Sahiru specializes in Python, Java, Spring Boot, React, and MySQL. He's also highly focused on Data Science and Machine Learning!";
+    } 
+    else if (input.includes('project') || input.includes('portfolio') || input.includes('work')) {
+      return "Sahiru has developed great projects like a Hotel Management System (Python), a Vehicle Rental Platform (TypeScript/React), and an ongoing Hospital Management System (Java/Spring Boot).";
+    } 
+    else if (input.includes('education') || input.includes('degree') || input.includes('sltc') || input.includes('ucsc')) {
+      return "He is pursuing a dual degree! A BSc (Hons) in Data Science at SLTC, and a Bachelor of Information Technology (BIT) at UCSC.";
+    } 
+    else if (input.includes('contact') || input.includes('email') || input.includes('phone') || input.includes('hire')) {
+      return "You can reach Sahiru directly at sahirusandeepa52@gmail.com or call him at +94 70 213 2649.";
+    } 
+    else if (input.includes('cv') || input.includes('resume')) {
+      return "You can easily download his full CV using the 'Access CV' button in the About section at the top of the page!";
+    } 
+    else {
+      // Default fallback answer
+      return "That's an interesting question! I'm a simple demo assistant, but you can find most details by exploring the portfolio sections above or downloading his CV.";
+    }
+  };
+const handleSendMessage = (e) => {
     e.preventDefault();
-    if (!chatInput.trim()) return;
+    const currentInput = chatInput.trim();
+    if (!currentInput) return;
 
-    const newMessages = [...chatMessages, { sender: 'user', text: chatInput }];
-    setChatMessages(newMessages);
+    // 1. Add the user's message immediately
+    setChatMessages(prev => [...prev, { sender: 'user', text: currentInput }]);
     setChatInput('');
     setIsTyping(true);
 
+    // 2. Generate the AI response based on the input
+    const aiResponse = generateAIResponse(currentInput);
+
+    // 3. Delay the response to simulate "typing"
     setTimeout(() => {
       setIsTyping(false);
-      setChatMessages([...newMessages, { 
+      setChatMessages(prev => [...prev, { 
         sender: 'ai', 
-        text: "That's a great question! Since I'm a demo assistant for this CA, I recommend checking out the sections below or downloading the CV for full details." 
+        text: aiResponse 
       }]);
     }, 1500);
   };
@@ -379,14 +438,11 @@ useEffect(() => {
                     />
                   </div>
 
-                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-20 bg-slate-800/80 backdrop-blur-xl px-5 py-2.5 rounded-2xl flex items-center gap-3 border border-white/5 shadow-2xl hover:-translate-y-2 transition-transform duration-300 whitespace-nowrap">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
-                    <span className="text-sm font-bold text-slate-200 tracking-wide">Data Science and AI Enthusiast</span>
-                  </div>
-  <div className="absolute -bottom-6 -right-4 md:-right-10 z-20 bg-slate-800/80 backdrop-blur-xl px-6 py-4 rounded-[1.5rem] flex flex-col items-center justify-center border border-white/5 shadow-2xl hover:-translate-y-2 transition-transform duration-300">
-    <span className="text-2xl font-extrabold text-blue-400 drop-shadow-md">UG</span>
-    <span className="text-sm text-slate-400 font-extrabold text-center mt-1 leading-tight">at<br/>SLTC</span>
+<div className="absolute -top-12 left-1/2 -translate-x-1/2 z-20 bg-slate-800/80 backdrop-blur-xl px-5 py-2.5 rounded-2xl flex items-center gap-3 border border-white/5 shadow-2xl animate-floating whitespace-nowrap">
+    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
+    <span className="text-1xl font-bold text-slate-200 tracking-wide">Data Science and AI Enthusiast</span>
   </div>
+
 
                 </div>
               </div>
@@ -395,7 +451,7 @@ useEffect(() => {
         </section>
 
         <section id="education" className="py-24 px-6 max-w-5xl mx-auto relative z-10">
-          <RevealOnScroll>
+                  <RevealOnScroll>
             <div className="flex items-center gap-4 mb-16">
               <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
               <h2 className="text-4xl font-bold tracking-tight"><span className="text-gradient">Journey</span> and Milestones</h2>
@@ -497,16 +553,50 @@ useEffect(() => {
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll delay={300} className="relative pl-8 md:pl-12 group">
-              <div className="absolute w-10 h-10 bg-slate-900 border border-pink-500/50 rounded-full flex items-center justify-center -left-5 top-0 group-hover:border-pink-400 transition-all">
+<RevealOnScroll delay={300} className="relative pl-8 md:pl-12 group">
+              <div className="absolute w-10 h-10 bg-slate-900 border border-pink-500/50 rounded-full flex items-center justify-center -left-5 top-0 group-hover:border-pink-400 transition-all shadow-[0_0_15px_rgba(236,72,153,0.2)]">
                 <FaAward size={20} className="text-pink-400" />
               </div>
+              
               <div className="glass glass-card p-8 rounded-2xl transition-all duration-300">
-                <span className="text-pink-400 text-lg font-bold tracking-wider mb-2 block uppercase">Achievements</span>
-                <h3 className="text-xl font-bold text-white mb-2">Established Freelance Graphic Designer</h3>
-                <p className="text-slate-400 leading-relaxed">
-                  Successfully managing and scaling a freelance design enterprise, delivering bespoke branding.
-                </p>
+                <span className="text-pink-400 text-lg font-bold tracking-wider mb-4 block uppercase">Achievements & Certifications</span>
+                
+                {/* --- Your Current Achievement --- */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-white mb-2">Established Freelance Graphic Designer</h3>
+                  <p className="text-slate-400 leading-relaxed text-1xl font-semibold">
+                    Successfully managing and scaling a freelance design enterprise, delivering bespoke branding.
+                  </p>
+                </div>
+
+                {/* --- Glowing Divider --- */}
+                <div className="w-full h-px bg-gradient-to-r from-pink-500/50 via-purple-500/30 to-transparent mb-6"></div>
+
+                {/* --- New Certificates Section --- */}
+                <h4 className="text-md font-bold text-slate-200 mb-4">Professional Certificates</h4>
+                
+<ul className="space-y-3">
+                  {certificatesData.map((cert) => (
+                    <li key={cert.id} className="flex items-center justify-between gap-3 p-3 rounded-xl hover:bg-slate-800/40 border border-transparent hover:border-white/5 transition-all group/cert">
+                      <div className="flex items-start gap-3">
+                        <span className="text-pink-500 mt-1 group-hover/cert:translate-x-1 transition-transform">
+                          <FaChevronRight size={14} />
+                        </span>
+                        <div>
+                          <h5 className="text-white font-semibold text-1xl">{cert.title}</h5>
+                          <p className="text-slate-400 text-1xl mt-1 font-semibold">{cert.issuer} • {cert.year}</p>
+                        </div>
+                      </div>
+                      
+                      <button 
+                        onClick={() => setSelectedCertificate(cert)}
+                        className="text-xs font-bold px-4 py-2 bg-pink-500/10 text-pink-400 hover:bg-pink-500 hover:text-white rounded-lg transition-colors border border-pink-500/20 whitespace-nowrap shadow-sm hover:shadow-[0_0_15px_rgba(236,72,153,0.4)]"
+                      >
+                        Show Credentials
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </RevealOnScroll>
           </div>
@@ -655,6 +745,45 @@ useEffect(() => {
             </div>
           </div>
         )}
+{/* --- CERTIFICATE PDF POP-UP MODAL --- */}
+        {selectedCertificate && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+            
+            {/* Backdrop */}
+            <div 
+              className="absolute inset-0 bg-slate-950/60 backdrop-blur-xl animate-fade-in cursor-pointer"
+              onClick={() => setSelectedCertificate(null)}
+            ></div>
+            
+            {/* Modal Container */}
+            <div className="relative glass bg-slate-900/95 border border-white/10 rounded-3xl w-full max-w-4xl h-[85vh] flex flex-col shadow-2xl animate-pop-in">
+              
+              {/* Header */}
+              <div className="flex justify-between items-center p-6 border-b border-white/10">
+                <h3 className="text-xl font-bold text-white flex items-center gap-3">
+                  <FaAward className="text-pink-400" size={24} /> {selectedCertificate.title}
+                </h3>
+                <button 
+                  onClick={() => setSelectedCertificate(null)} 
+                  className="text-slate-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"
+                >
+                  <FaTimes size={24} />
+                </button>
+              </div>
+              
+              {/* PDF Viewer */}
+              <div className="flex-1 w-full bg-slate-950/50 p-2 sm:p-6 rounded-b-3xl">
+                <iframe 
+                  src={`${selectedCertificate.file}#toolbar=0&navpanes=0`}
+                  className="w-full h-full rounded-xl border border-white/10 bg-slate-800"
+                  title={selectedCertificate.title}
+                />
+              </div>
+
+            </div>
+          </div>
+        )}
+        
         
 {/* --- ENHANCED 4-COLUMN FOOTER --- */}
         <footer id="contact" className="relative mt-32 bg-[#020617] overflow-hidden border-t border-white/10">
