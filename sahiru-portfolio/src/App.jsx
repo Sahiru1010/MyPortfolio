@@ -559,9 +559,9 @@ useEffect(() => {
                 
                 {/* --- Your Current Achievement --- */}
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-white mb-2">Established Freelance Graphic Designer</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Professional Certificates</h3>
                   <p className="text-slate-400 leading-relaxed text-1xl font-semibold">
-                    Successfully managing and scaling a freelance design enterprise, delivering bespoke branding.
+                   I earned some professional certificates in Data Science, Machine Learning, and Software Development. These certifications validate my expertise, as well as my commitment to lifelong learning in an ever-evolving tech landscape.
                   </p>
                 </div>
 
