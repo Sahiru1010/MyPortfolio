@@ -6,6 +6,8 @@ import {
   FaPhoneAlt, FaMapMarkerAlt, FaFacebookF
 } from 'react-icons/fa';
 
+import { FaHotel, FaCar, FaHospital } from 'react-icons/fa';
+
 // ... your other imports ...
 
 import LiquidEther from './LiquidEther'; // <-- Add this import
@@ -106,17 +108,17 @@ export default function App() {
     {
       id: 'hotel',
       title: 'Hotel Management System',
-      icon: <FaBriefcase size={24} className="text-indigo-400" />,
+      icon: <FaHotel className="text-indigo-400 text-2xl"/>,
       themeColor: 'text-indigo-400',
       btnColor: 'bg-indigo-600 hover:bg-indigo-500',
       gradient: 'from-blue-500 to-indigo-500',
       tags: ['Python', 'Tkinter'],
       shortDesc: 'A light weight desktop based Graphical User Interface (GUI) application to help in booking hotels and manage guest data efficiently. The project is written entirely in Python and demonstrates practical skills in state management, input validation and file handling.',
-      features: [
-        'Developed using Python and the Tkinter GUI library',
-        'Advanced file handling and data structure management',
-        'Secure user authentication and session handling',
-        'Algorithmic logic for room allocation and billing'
+features: [
+        'Designed and implemented a lightweight, responsive desktop Graphical User Interface (GUI) leveraging Python\'s Tkinter library',
+        'Engineered robust custom file handling and data structure management modules to securely process and persist guest records',
+        'Developed rigorous input validation and application state management protocols to ensure high data integrity during booking workflows',
+        'Programmed core algorithmic logic to automate and optimize room allocation, ongoing guest tracking, and billing calculations'
       ],
       gallery: [
         hotelImg1,
@@ -129,17 +131,17 @@ export default function App() {
     {
       id: 'vehicle',
       title: 'Vehicle Rental Platform',
-      icon: <FaTerminal size={24} className="text-purple-400" />,
+      icon: <FaCar className="text-purple-400 text-2xl" />,
       themeColor: 'text-purple-400',
       btnColor: 'bg-purple-600 hover:bg-purple-500',
       gradient: 'from-purple-500 to-pink-500',
       tags: ['TypeScript', 'JavaScript', 'CSS'],
       shortDesc: 'A modern web application scalable and designed to simplify the operations of vehicle fleet management and vehicle rentals. The platform is hosted on Vercel, ensuring high-performance hosting and delivering a seamless and responsive user experience for browsing, filtering, and interacting with dynamic vehicle inventories.',
-      features: [
-        'Scalable architecture designed for enterprise vehicle fleets',
-        'Integration of unique rental service features and constraints',
-        'Comprehensive system design documentation',
-        'Researched and structured for a university BIT project'
+features: [
+        'Developed a scalable frontend architecture utilizing TypeScript and JavaScript to manage complex state for vehicle fleet inventories',
+        'Engineered a highly responsive, custom-styled user interface with pure CSS to optimize the browsing and filtering experience',
+        'Deployed via Vercel to leverage edge networks, ensuring high-performance hosting and minimal latency for end-users',
+        'Designed comprehensive system documentation and dynamic filtering algorithms tailored for enterprise-level rental constraints'
       ],
       gallery: [
         VehicleImg1,
@@ -152,17 +154,17 @@ export default function App() {
     {
       id: 'content',
       title: 'Ongoing Hospital Management System',
-      icon: <FaUser size={24} className="text-pink-400" />,
+      icon: <FaHospital className="text-pink-400 text-2xl" />,
       themeColor: 'text-pink-400',
       btnColor: 'bg-pink-600 hover:bg-pink-500',
       gradient: 'from-pink-500 to-rose-500',
       tags: ['Java', 'Spring Boot', 'MySQL', 'Spring Data JPA/Hibernate'],
       shortDesc: 'A complete enterprise backend system for hospital operations, providing RESTful APIs with security. The application is built 100% in Java and Spring Boot and provides seamless integration of complex relational databases with a strong object-oriented software architecture.',
-      features: [
-        'Targeted brand architecture (US News and Culture, Meow Moments, GG HUB)',
-        'Custom logo generation and niche-specific bio engineering',
-        'Audience engagement tactics for Facebook, TikTok, and YouTube',
-        'Cross-platform monetization and content scaling strategies'
+features: [
+        'Engineered a robust RESTful API architecture using Java and Spring Boot to streamline hospital operations',
+        'Implemented efficient relational data mapping and advanced querying using Spring Data JPA, Hibernate, and MySQL',
+        'Designed scalable core domain modules for patient registration, appointment scheduling, and digital medical records',
+        'Developing secure role-based access control (RBAC) protocols to ensure strict medical data privacy and system integrity'
       ],
 gallery: [
         // 1. Represents the overall system design (Layered Architecture)
@@ -343,7 +345,7 @@ useEffect(() => {
         <nav className="fixed w-full top-0 z-50 p-4 flex justify-center pointer-events-none">
           <div className="glass pointer-events-auto rounded-full px-6 py-3 flex items-center gap-8 shadow-2xl shadow-black/50 transition-all">
             <span className="font-bold text-lg text-white tracking-wider flex items-center gap-2">
-              <FaStar size={18} className="text-indigo-400" /> Sahiru Sandeepa
+               Sahiru Sandeepa
             </span>
             <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
               <a href="#about" className="hover:text-white transition-all">About Me</a>
@@ -357,12 +359,12 @@ useEffect(() => {
         <section id="about" className="relative pt-40 pb-20 px-6 lg:pt-48 lg:pb-32 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16">
           <div className="flex-1 space-y-8 z-10">
             <RevealOnScroll>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-indigo-300 text-sm font-medium mb-4">
-                <FaTerminal size={14} /> 
+              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-900 border-2 border-indigo-500/50 shadow-[0_4px_0_rgba(99,102,241,0.2)] transition-transform hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(99,102,241,0.3)] cursor-default">
+                <FaTerminal size={14} /> Hello!!!👋
               </div>
-              <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
                 Designing Data.<br />
-                <span className="text-gradient">Building Future.</span>
+                <span className="text-gradient">Building the Future.</span>
               </h1>
             </RevealOnScroll>
             
@@ -466,13 +468,13 @@ useEffect(() => {
                 <br></br>
                 <h3 className="text-2xl font-bold text-white mb-2">BSc (Hons) in Data Science</h3>
                 <h4 className="text-lg text-slate-300 mb-4 font-medium">Sri Lanka Technological Campus (SLTC)</h4>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-slate-400 leading-relaxed font-semibold">
                   Currently pursuing a degree with strong academic focus on Artificial Intelligence, Machine Learning, Big Data Analytics, and complex statistical modelling.
                 </p>
                 <br></br>
                 <h3 className="text-2xl font-bold text-white mb-2">Bachelor of Information Technology (BIT)</h3>
                 <h4 className="text-lg text-slate-300 mb-4 font-medium">University of Colombo School Of Computing (UCSC)</h4>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-slate-400 leading-relaxed font-semibold">
                   This external degree program specially focus on Software Engineering, Full-Stack Development and complex systems architecture.
                 </p>
               </div>
@@ -568,8 +570,7 @@ useEffect(() => {
                 {/* --- Glowing Divider --- */}
                 <div className="w-full h-px bg-gradient-to-r from-pink-500/50 via-purple-500/30 to-transparent mb-6"></div>
 
-                {/* --- New Certificates Section --- */}
-                <h4 className="text-md font-bold text-slate-200 mb-4">Professional Certificates</h4>
+                
                 
 <ul className="space-y-3">
                   {certificatesData.map((cert) => (
@@ -586,9 +587,9 @@ useEffect(() => {
                       
                       <button 
                         onClick={() => setSelectedCertificate(cert)}
-                        className="text-xs font-bold px-4 py-2 bg-pink-500/10 text-pink-400 hover:bg-pink-500 hover:text-white rounded-lg transition-colors border border-pink-500/20 whitespace-nowrap shadow-sm hover:shadow-[0_0_15px_rgba(236,72,153,0.4)]"
+                        className="text-xs font-bold px-4 py-2 bg-blue-500/10 text-white-400 hover:bg-blue-500 hover:text-white rounded-lg transition-colors border border-blue-500/20 whitespace-nowrap shadow-sm hover:shadow-[0_0_15px_rgba(236,72,153,0.4)]"
                       >
-                        Show Credentials
+                        View Certificate
                       </button>
                     </li>
                   ))}
@@ -911,7 +912,7 @@ useEffect(() => {
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-slate-900 rounded-full"></span>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white leading-tight">Sahiru AI</h4>
+                  <h4 className="text-sm font-bold text-white leading-tight">Ask Me</h4>
                 </div>
               </div>
               <button onClick={() => setIsChatOpen(false)} className="text-slate-400 hover:text-white transition-colors">
