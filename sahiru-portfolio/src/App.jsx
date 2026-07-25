@@ -87,13 +87,7 @@ export default function App() {
       year: '2026', 
       file: 'Python_for_Beginners_E-Certificate.pdf' // <-- Removed the "/"
     },
-    {
-      id: 3, 
-      title: 'Full-Stack React Architecture', 
-      issuer: 'Meta', 
-      year: '2026', 
-      file: 'react-cert.pdf' // <-- Removed the "/"
-    }
+
   ];
     
   const galleryRef = useRef(null);
