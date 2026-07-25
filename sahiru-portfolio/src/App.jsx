@@ -360,7 +360,7 @@ useEffect(() => {
           <div className="flex-1 space-y-8 z-10">
             <RevealOnScroll>
               <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-900 border-2 border-indigo-500/50 shadow-[0_4px_0_rgba(99,102,241,0.2)] transition-transform hover:-translate-y-1 hover:shadow-[0_6px_0_rgba(99,102,241,0.3)] cursor-default">
-                <FaTerminal size={14} /> Hello!!!👋
+                <FaTerminal size={14} /> Hello!!! Welcome to my Portfolio 👋
               </div>
               <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
                 Designing Data.<br />
