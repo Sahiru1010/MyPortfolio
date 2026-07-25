@@ -380,7 +380,7 @@ useEffect(() => {
                   <a href="#contact" className="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(79,70,229,0.4)] flex items-center gap-2 group">
                     Get in Touch <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <a href="/sahiru-cv.pdf" download className="px-8 py-4 rounded-xl bg-slate-900 border border-white/10 hover:bg-slate-800 text-white font-bold transition-all hover:scale-105 flex items-center gap-2">
+                  <a href="MyCV.pdf" download className="px-8 py-4 rounded-xl bg-slate-900 border border-white/10 hover:bg-slate-800 text-white font-bold transition-all hover:scale-105 flex items-center gap-2">
                     <FaDownload /> Access CV
                   </a>
                 </div>
