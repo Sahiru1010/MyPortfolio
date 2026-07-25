@@ -78,14 +78,14 @@ export default function App() {
       title: 'AWS Foundations: Machine Learning Basics', 
       issuer: 'AWS Training & Certification', 
       year: '2026',
-      file: '/ML spec AWS.pdf' // <-- Put ml-cert.pdf in your public folder
+      file: 'ML_spec_AWS.pdf' // <-- Put ml-cert.pdf in your public folder
     },
     { 
       id: 2, 
       title: 'Programming in Python - Python for Beginners ',
       issuer: 'University of Moratuwa',
       year: '2026', 
-      file: '/Python_for_Beginners_E-Certificate.pdf' // <-- Put ds-cert.pdf in your public folder
+      file: 'Python_for_Beginners_E-Certificate.pdf' // <-- Put ds-cert.pdf in your public folder
     },
     
     {
@@ -93,7 +93,7 @@ export default function App() {
       title: 'Full-Stack React Architecture', 
       issuer: 'Meta', 
       year: '2026', 
-      file: '/react-cert.pdf' // <-- Put react-cert.pdf in your public folder
+      file: 'react-cert.pdf' // <-- Put react-cert.pdf in your public folder
     }
     
   ];
