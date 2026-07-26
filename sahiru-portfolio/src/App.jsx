@@ -172,7 +172,7 @@ gallery: [
         SpringImg,
         MySQLImg,
       ],
-      githubLink: 'https://github.com/yourusername/social-networks'
+      githubLink: 'https://github.com/Sahiru1010/Hospital-Management-System.git'
     }
   ];
 
